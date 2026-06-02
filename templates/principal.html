@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Principal</title>
+
+<style>
+
+body{
+    font-family:Arial;
+    background:#ecf0f1;
+    text-align:center;
+    padding-top:100px;
+}
+
+.panel{
+    background:white;
+    width:500px;
+    margin:auto;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 0 15px rgba(0,0,0,.2);
+}
+
+button{
+    padding:12px 25px;
+    margin:10px;
+    border:none;
+    border-radius:8px;
+    color:white;
+    cursor:pointer;
+}
+
+.buscar{
+    background:#27ae60;
+}
+
+.salir{
+    background:#e74c3c;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="panel">
+
+    <h1>Bienvenido {{ nombre }}</h1>
+
+    <a href="/buscador">
+        <button class="buscar">
+            Buscar Productos
+        </button>
+    </a>
+
+    <a href="/logout">
+        <button class="salir">
+            Salir del Sistema
+        </button>
+    </a>
+
+</div>
+
+</body>
+</html>

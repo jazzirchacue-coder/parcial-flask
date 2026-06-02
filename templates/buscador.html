@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Buscador</title>
+
+<style>
+
+body{
+    font-family:Arial;
+    background:#f4f6f9;
+}
+
+.container{
+    width:700px;
+    margin:50px auto;
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 0 15px rgba(0,0,0,.2);
+}
+
+h1{
+    text-align:center;
+}
+
+input{
+    width:70%;
+    padding:10px;
+}
+
+button{
+    padding:10px 20px;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.buscar{
+    background:#3498db;
+    color:white;
+}
+
+.regresar{
+    background:#27ae60;
+    color:white;
+}
+
+.salir{
+    background:#e74c3c;
+    color:white;
+}
+
+#resultado{
+    margin-top:20px;
+    background:#ecf0f1;
+    padding:15px;
+    border-radius:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🔎 Buscador de Productos</h1>
+
+<input
+type="text"
+id="codigo"
+placeholder="Ingrese código del producto">
+
+<button
+class="buscar"
+onclick="buscar()">
+Buscar
+</button>
+
+<div id="resultado"></div>
+
+<br><br>
+
+<a href="/principal">
+<button class="regresar">
+Regresar
+</button>
+</a>
+
+<a href="/logout">
+<button class="salir">
+Salir
+</button>
+</a>
+
+</div>
+
+<script>
+
+function buscar(){
+
+let codigo =
+document.getElementById("codigo").value;
+
+let datos = new FormData();
+
+datos.append("codigo",codigo);
+
+fetch("/api/buscar_producto",{
+method:"POST",
+body:datos
+})
+
+.then(r=>r.json())
+
+.then(data=>{
+
+document.getElementById("resultado")
+.innerHTML=
+
+"<pre>"+JSON.stringify(data,null,4)+"</pre>";
+
+});
+
+}
+
+</script>
+
+</body>
+</html>
